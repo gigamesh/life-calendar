@@ -17,23 +17,28 @@ const Letter = styled.Text`
 export default class TitleAnim extends Component {
   constructor() {
     super();
+    this.rotationAnims = [];
     this.rotateSpeed = new Animated.Value(0);
   }
   componentDidMount() {
     this.rotateLetters();
   }
   rotateLetters() {
-    Animated.timing(this.rotateSpeed, {
-      toValue: 1,
-      duration: 2000,
-      easing: Easing.linear
-    }).start();
+    const animations = title.map(ch => {
+      return Animated.timing(this.rotationAnims[ch], {
+        toValue: 1,
+        duration: 2000,
+        easing: Easing.linear
+      });
+    });
+    Animated.stagger(30, animations).start();
   }
   render() {
     const rotate = this.rotateSpeed.interpolate({
       inputRange: [0, 1],
       outputRange: ["90deg", "0deg"]
     });
+
     const titleText = () => {
       return title.split("").map((ch, i) => (
         <Animated.View
