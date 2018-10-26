@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Animated, Easing } from "react-native";
 import styled from "styled-components/native";
 import { ThemeContext } from "../ThemeContext";
+import BackgroundImage from "../BackgroundImage";
 
 const title = "LIFE CALENDAR".split("");
 
@@ -45,6 +46,7 @@ let BorderBottom = styled.View`
 BorderBottom = Animated.createAnimatedComponent(BorderBottom);
 
 export default class TitleAnim extends Component {
+  static contextType = ThemeContext;
   constructor() {
     super();
     this.rotationAnims = [];
@@ -120,6 +122,7 @@ export default class TitleAnim extends Component {
   };
 
   render() {
+    const theme = this.context;
     const rotateY = title.map((_, i) => {
       return this.rotationAnims[i].interpolate({
         inputRange: [0, 1],
@@ -150,35 +153,31 @@ export default class TitleAnim extends Component {
     };
 
     return (
-      <ThemeContext.Consumer>
-        {({ theme }) => (
-          <React.Fragment>
-            <WrapAnim
-              style={{
-                height: this.titleHeight
-              }}
-            >
-              <BorderTop
-                color={theme.primary}
-                style={{
-                  width: width,
-                  left: rightLeft
-                }}
-              />
-              <AnimTitle style={{ transform: [{ scale: this.scale }] }}>
-                {titleText(theme)}
-              </AnimTitle>
-              <BorderBottom
-                color={theme.primary}
-                style={{
-                  width: width,
-                  right: rightLeft
-                }}
-              />
-            </WrapAnim>
-          </React.Fragment>
-        )}
-      </ThemeContext.Consumer>
+      <BackgroundImage>
+        <WrapAnim
+          style={{
+            height: this.titleHeight
+          }}
+        >
+          <BorderTop
+            color={theme.primary}
+            style={{
+              width: width,
+              left: rightLeft
+            }}
+          />
+          <AnimTitle style={{ transform: [{ scale: this.scale }] }}>
+            {titleText(theme)}
+          </AnimTitle>
+          <BorderBottom
+            color={theme.primary}
+            style={{
+              width: width,
+              right: rightLeft
+            }}
+          />
+        </WrapAnim>
+      </BackgroundImage>
     );
   }
 }

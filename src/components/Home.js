@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-
 import styled from "styled-components/native";
+
 import { ThemeContext } from "../ThemeContext";
+import BackgroundImage from "../BackgroundImage";
 
 const TextStyled = styled.Text`
   color: #fff;
@@ -13,7 +14,11 @@ export default class Home extends Component {
     console.log("hommme!");
     return (
       <ThemeContext.Consumer>
-        {({ theme }) => <TextStyled>home route</TextStyled>}
+        {({ theme }) => (
+          <BackgroundImage>
+            <TextStyled>home route</TextStyled>
+          </BackgroundImage>
+        )}
       </ThemeContext.Consumer>
     );
   }
