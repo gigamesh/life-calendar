@@ -4,25 +4,11 @@ import styled from "styled-components";
 import SwitchNav from "./Routes";
 import { StatusBar } from "react-native";
 
-const MainContainer = styled.View`
-  flex: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  overflow: hidden;
-`;
-
 const BGImage = styled.ImageBackground`
   flex: 1;
   width: 100%;
   height: 100%;
   justify-content: center;
-  /* align-items: center; */
   flex-wrap: nowrap;
   overflow: hidden;
 `;

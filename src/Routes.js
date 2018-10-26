@@ -7,30 +7,29 @@ import {
 } from "react-navigation";
 import TitleAnim from "./components/TitleAnim";
 import Home from "./components/Home";
+import AddEvent from "./components/AddEvent";
 
-export const StackNav = createBottomTabNavigator(
+export const tabNav = createBottomTabNavigator(
   {
-    Home
+    Home,
+    AddEvent
   },
   {
-    mode: "card",
-    headerMode: "screen",
-    tintColor: "#ffffff",
     navigationOptions: {
-      headerTitle: (
-        <View style={{ flex: 1, height: 150, backgroundColor: "#fdc011" }} />
-      ),
-      headerStyle: {
-        height: 50,
-        backgroundColor: "transparent",
-        opacity: 1,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        borderBottomWidth: 0
-      },
-      headerTintColor: "#fff"
+      backBehavior: "none",
+      tabBarOptions: {
+        style: {
+          height: 50,
+          backgroundColor: "transparent",
+          borderBottomWidth: 0,
+          borderTopWidth: 0,
+          paddingBottom: 5
+        },
+        labelStyle: {
+          color: "#fff",
+          fontSize: 20
+        }
+      }
     },
     cardStyle: {
       shadowColor: "transparent",
@@ -41,5 +40,5 @@ export const StackNav = createBottomTabNavigator(
 
 export default createSwitchNavigator({
   TitleAnim,
-  StackNav
+  tabNav
 });
