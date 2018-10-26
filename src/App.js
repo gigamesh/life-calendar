@@ -1,9 +1,38 @@
 import React, { Component } from "react";
 import { ThemeContext, themes } from "./ThemeContext";
-// import styled from "styled-components";
+import styled from "styled-components";
 import SwitchNav from "./Routes";
+import { StatusBar } from "react-native";
+
+const MainContainer = styled.View`
+  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+`;
+
+const BGImage = styled.ImageBackground`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  /* align-items: center; */
+  flex-wrap: nowrap;
+  overflow: hidden;
+`;
 
 export default class App extends Component {
+  static navigationOptions = {
+    header: {
+      visible: false
+    }
+  };
   constructor(props) {
     super(props);
 
@@ -22,7 +51,21 @@ export default class App extends Component {
     // console.log(this.state);
     return (
       <ThemeContext.Provider value={this.state}>
-        <SwitchNav />
+        {/* <MainContainer> */}
+        <BGImage
+          style={{
+            resizeMode: "cover"
+          }}
+          source={this.state.theme.bg_image}
+        >
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor="transparent"
+            translucent={true}
+          />
+          <SwitchNav />
+        </BGImage>
+        {/* </MainContainer> */}
       </ThemeContext.Provider>
     );
   }

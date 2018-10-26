@@ -10,12 +10,15 @@ const TextStyled = styled.Text`
 `;
 
 export default class Home extends Component {
+  static navigationOptions = {
+    header: navigation => ({
+      visible: true,
+      style: Styles.navBar,
+      tintColor: "white"
+    })
+  };
   render() {
-    // console.log("hommme!");
-    return (
-      <BackgroundImage>
-        <TextStyled>home route</TextStyled>
-      </BackgroundImage>
-    );
+    console.log("hommme!");
+    return <TextStyled>home route</TextStyled>;
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
+import { View } from "react-native";
 
 import {
   createSwitchNavigator,
@@ -13,15 +13,24 @@ export const StackNav = createBottomTabNavigator(
     Home
   },
   {
+    mode: "card",
+    headerMode: "screen",
+    tintColor: "#ffffff",
     navigationOptions: {
       headerTitle: (
-        <Image
-          style={{ flex: 1, height: 150, backgroundColor: "#fdc011" }}
-          resizeMode="contain"
-          source={require("../assets/img/sky-night.jpg")}
-        />
+        <View style={{ flex: 1, height: 150, backgroundColor: "#fdc011" }} />
       ),
-      headerStyle: { height: 150, backgroundColor: "transparent", opacity: 1 }
+      headerStyle: {
+        height: 50,
+        backgroundColor: "transparent",
+        opacity: 1,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        borderBottomWidth: 0
+      },
+      headerTintColor: "#fff"
     },
     cardStyle: {
       shadowColor: "transparent",
