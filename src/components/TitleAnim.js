@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, Easing, View } from "react-native";
+import { Animated, Easing } from "react-native";
 import styled from "styled-components/native";
 import { ThemeContext } from "../ThemeContext";
 
@@ -64,7 +64,11 @@ export default class TitleAnim extends Component {
       this.spaceLetters()
     ]);
     const stage3 = this.zoomOutTitle();
-    Animated.sequence([stage1, stage2, Animated.delay(800), stage3]).start();
+    Animated.sequence([stage1, stage2, Animated.delay(800), stage3]).start(
+      () => {
+        this.props.navigation.navigate("Home");
+      }
+    );
   }
   rotateLetters = () => {
     const animations = title.map((_, i) => {
