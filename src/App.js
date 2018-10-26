@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TitleAnim from "./components/TitleAnim";
 import { ThemeContext, themes } from "./ThemeContext";
 import styled from "styled-components";
 import SwitchNav from "./Routes";
