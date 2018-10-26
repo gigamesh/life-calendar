@@ -14,11 +14,12 @@ export default class App extends Component {
     };
 
     this.state = {
-      theme: themes.light
+      theme: themes.dark
     };
   }
 
   render() {
+    // console.log(this.state);
     return (
       <ThemeContext.Provider value={this.state}>
         <SwitchNav />

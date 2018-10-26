@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext, themes } from "./ThemeContext";
 import styled from "styled-components";
 
 const MainContainer = styled.View`
@@ -25,24 +25,27 @@ const BGImage = styled.ImageBackground`
   overflow: hidden;
 `;
 
-export default function BackgroundImage(props) {
-  return (
-    <ThemeContext.Consumer>
-      {theme => {
-        console.log(theme);
-        return (
-          <MainContainer>
-            <BGImage
-              style={{
-                resizeMode: "cover"
-              }}
-              source={theme.bg_image}
-            >
-              {props.children}
-            </BGImage>
-          </MainContainer>
-        );
-      }}
-    </ThemeContext.Consumer>
-  );
+export default class BackgroundImage extends React.Component {
+  render() {
+    return (
+      <ThemeContext.Consumer>
+        {({ theme }) => {
+          console.log(JSON.stringify(theme.primary));
+          // console.log(JSON.stringify(themes.dark.bg_image));
+          return (
+            <MainContainer>
+              <BGImage
+                style={{
+                  resizeMode: "cover"
+                }}
+                source={theme.bg_image}
+              >
+                {this.props.children}
+              </BGImage>
+            </MainContainer>
+          );
+        }}
+      </ThemeContext.Consumer>
+    );
+  }
 }
