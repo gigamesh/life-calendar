@@ -3,6 +3,7 @@ import { ThemeContext, themes } from "./ThemeContext";
 import styled from "styled-components";
 import SwitchNav from "./Routes";
 import { StatusBar } from "react-native";
+import Header from "./components/Header";
 
 const BGImage = styled.ImageBackground`
   flex: 1;
@@ -14,11 +15,6 @@ const BGImage = styled.ImageBackground`
 `;
 
 export default class App extends Component {
-  static navigationOptions = {
-    header: {
-      visible: false
-    }
-  };
   constructor(props) {
     super(props);
 
@@ -29,12 +25,18 @@ export default class App extends Component {
     };
 
     this.state = {
-      theme: themes.dark
+      theme: themes.dark,
+      headerVisible: false
     };
   }
 
+  isIntroDone = () => {
+    this.setState({
+      headerVisible: true
+    });
+  };
+
   render() {
-    // console.log(this.state);
     return (
       <ThemeContext.Provider value={this.state}>
         {/* <MainContainer> */}
@@ -44,12 +46,14 @@ export default class App extends Component {
           }}
           source={this.state.theme.bg_image}
         >
+          <Header headerVisible={this.state.headerVisible} />
           <StatusBar
+            hidden={true}
             barStyle="light-content"
             backgroundColor="transparent"
             translucent={true}
           />
-          <SwitchNav />
+          <SwitchNav screenProps={{ isIntroDone: this.isIntroDone }} />
         </BGImage>
         {/* </MainContainer> */}
       </ThemeContext.Provider>

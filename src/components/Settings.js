@@ -8,11 +8,11 @@ const TextStyled = styled.Text`
   font-size: 26px;
 `;
 
-export default class AddEvent extends Component {
+export default class Settings extends Component {
   render() {
     return (
       <FullWrap>
-        <TextStyled>add event</TextStyled>
+        <TextStyled>Settings</TextStyled>
       </FullWrap>
     );
   }

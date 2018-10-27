@@ -3,7 +3,7 @@ import { Animated, Easing } from "react-native";
 import styled from "styled-components/native";
 import { ThemeContext } from "../ThemeContext";
 import BackgroundImage from "../BackgroundImage";
-
+import { withNavigation } from "react-navigation";
 const title = "LIFE CALENDAR".split("");
 
 let WrapAnim = styled.View`
@@ -45,7 +45,7 @@ let BorderBottom = styled.View`
 
 BorderBottom = Animated.createAnimatedComponent(BorderBottom);
 
-export default class TitleAnim extends Component {
+class TitleAnim extends Component {
   constructor() {
     super();
     this.rotationAnims = [];
@@ -67,6 +67,7 @@ export default class TitleAnim extends Component {
     const stage3 = this.zoomOutTitle();
     Animated.sequence([stage1, stage2, Animated.delay(800), stage3]).start(
       () => {
+        this.props.screenProps.isIntroDone();
         this.props.navigation.navigate("Home");
       }
     );
@@ -119,7 +120,6 @@ export default class TitleAnim extends Component {
     });
     return Animated.parallel([scale, barWidths]);
   };
-
   render() {
     const rotateY = title.map((_, i) => {
       return this.rotationAnims[i].interpolate({
@@ -183,3 +183,5 @@ export default class TitleAnim extends Component {
     );
   }
 }
+
+export default withNavigation(TitleAnim);
