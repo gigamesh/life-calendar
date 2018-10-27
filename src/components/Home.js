@@ -1,20 +1,37 @@
 import React, { Component } from "react";
-
+import { Animated, Easing } from "react-native";
 import styled from "styled-components/native";
-import { ThemeContext } from "../ThemeContext";
+import FullWrap from "./ui/FullWrap";
+import { animTiming } from "./helpers/animations";
 
-const TextStyled = styled.Text`
+// import { ThemeContext } from "../ThemeContext";
+
+let TextStyled = styled.Text`
   color: #fff;
-  size: 26px;
+  font-size: 26px;
 `;
 
-export default class Home extends Component {
+TextStyled = Animated.createAnimatedComponent(TextStyled);
+
+class Home extends Component {
+  constructor() {
+    super();
+    this.opacity = new Animated.Value(0);
+  }
+  static navigationOptions = {
+    title: "Home"
+  };
+  componentDidMount() {
+    animTiming(this.opacity, 300).start();
+  }
   render() {
     console.log("hommme!");
     return (
-      <ThemeContext.Consumer>
-        {({ theme }) => <TextStyled>home route</TextStyled>}
-      </ThemeContext.Consumer>
+      <FullWrap>
+        <TextStyled style={{ opacity: this.opacity }}>home route</TextStyled>
+      </FullWrap>
     );
   }
 }
+
+export default Home;
