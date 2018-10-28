@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components/native";
-import FullWrap from "./ui/FullWrap";
-// import { ThemeContext } from "../ThemeContext";
+import { FullWrap } from "./ui/wrappers";
+import * as Text from "./ui/textElements";
 
-const TextStyled = styled.Text`
-  color: #fff;
-  font-size: 26px;
-`;
+// import { ThemeContext } from "../ThemeContext";
 
 export default class LifePlan extends Component {
   render() {
     return (
       <FullWrap>
-        <TextStyled>life plan</TextStyled>
+        <Text.H1>Long Term Plan</Text.H1>
       </FullWrap>
     );
   }

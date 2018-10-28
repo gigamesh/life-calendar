@@ -10,7 +10,7 @@ import * as styles from "./components/helpers/styleConsts";
 import Home from "./components/Home";
 import AddEvent from "./components/AddEvent";
 import LifePlan from "./components/LifePlan";
-import Analytics from "./components/Analytics";
+import Inspiration from "./components/Inspiration";
 import Settings from "./components/Settings";
 
 export const tabNav = createMaterialTopTabNavigator(
@@ -18,7 +18,7 @@ export const tabNav = createMaterialTopTabNavigator(
     Home,
     AddEvent,
     LifePlan,
-    Analytics,
+    Inspiration,
     Settings
   },
   {
@@ -26,7 +26,6 @@ export const tabNav = createMaterialTopTabNavigator(
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
-        console.log(routeName);
         let iconName;
         switch (routeName) {
           case "Home":
@@ -38,7 +37,7 @@ export const tabNav = createMaterialTopTabNavigator(
           case "LifePlan":
             iconName = "map";
             break;
-          case "Analytics":
+          case "Inspiration":
             iconName = "bulb";
             break;
           case "Settings":
@@ -47,7 +46,6 @@ export const tabNav = createMaterialTopTabNavigator(
           default:
             iconName = "user";
         }
-        console.log(iconName);
         return <Icon name={iconName} size={25} color={tintColor} />;
       }
     }),

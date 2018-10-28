@@ -30,7 +30,6 @@ export default class BackgroundImage extends React.Component {
     return (
       <ThemeContext.Consumer>
         {({ theme }) => {
-          console.log(JSON.stringify(theme.primary));
           // console.log(JSON.stringify(themes.dark.bg_image));
           return (
             <MainContainer>

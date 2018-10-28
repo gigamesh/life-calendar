@@ -3,7 +3,7 @@ import { ThemeContext, themes } from "./ThemeContext";
 import styled from "styled-components";
 import SwitchNav from "./Routes";
 import { StatusBar } from "react-native";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 
 const BGImage = styled.ImageBackground`
   flex: 1;
@@ -46,7 +46,7 @@ export default class App extends Component {
           }}
           source={this.state.theme.bg_image}
         >
-          <Header headerVisible={this.state.headerVisible} />
+          {/* <Header headerVisible={this.state.headerVisible} /> */}
           <StatusBar
             hidden={true}
             barStyle="light-content"

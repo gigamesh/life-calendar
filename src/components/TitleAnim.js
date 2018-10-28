@@ -92,7 +92,7 @@ class TitleAnim extends Component {
   expandTitleBox = () => {
     // console.log("expandTitleBox");
     const height = Animated.timing(this.titleHeight, {
-      toValue: 34,
+      toValue: 33,
       duration: 200,
       easing: Easing.linear
     });
